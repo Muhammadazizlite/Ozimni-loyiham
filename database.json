@@ -209,8 +209,8 @@
                         "addthing":"Yumshoq 2.2li qora sim"
                   }
             ]}
-      ]},
-      {"sotuvTizimi":[
+      ],
+      "sotuvTizimi":[
             {"stoyka":[
                   {
                         "name":"3li sim",
@@ -229,5 +229,6 @@
                         "when":"2025-11-02"
                   }
             ]}
-      ]}
+      ]
+}
 ]

@@ -6,7 +6,7 @@ async function loadData() {
         const response = await fetch('database.json');
         if (!response.ok) throw new Error('Server error');
         const jsonData = await response.json();
-        data = jsonData;
+        data = jsonData[0];
         createCategoryButtons();
     } catch (error) {
         console.error('Error:', error);
