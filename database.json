@@ -1,0 +1,213 @@
+[
+      {"products":[
+            {"stoyka":[
+                  {
+                        "name":"3ta simli",
+                        "price":"16 000",
+                        "type":"stoyka",
+                        "lenght":"2.5m",
+                        "used":"3ta sim",
+                        "selltype":"dona",
+                        "base":100,
+                        "addthing":"3ta simli 16 000 almaturli zakas emas"
+                  },
+                  {
+                        "name":"3ta simli",
+                        "price":"17 000",
+                        "type":"stoyka",
+                        "lenght":"2.5m",
+                        "used":"3ta sim",
+                        "base":120,
+                        "selltype":"dona",
+                        "addthing":"3ta simli 16 000 almaturli zakas"
+                  },
+                  {
+                        "name":"stoyka archa",
+                        "price":"22 000",
+                        "type":"stoyka",
+                        "lenght":"2.5m",
+                        "used":"4ta sim",
+                        "base":0,
+                        "selltype":"dona",
+                        "addthing":"4ta simli 22 000 altursiz zakas"
+                  },
+                  {
+                        "name":"shiroki",
+                        "price":"32 000",
+                        "type":"stoyka",
+                        "used":"5ta sim",
+                        "lenght":"3m",
+                        "base":32,
+                        "selltype":"dona",
+                        "addthing":"5ta simli katta shiroki stoyka 32 000"
+                  }
+            ]},
+            {"stalba":[
+                  {
+                        "name":"trasfavarmatir tagiga",
+                        "lenght":"2.5m",
+                        "price":"200 000",
+                        "type":"stalba",
+                        "base":20,
+                        "selltype":"dona",
+                        "addthing":"Trasfarmatir tagiga stalba 200 000"
+                  },
+                  {
+                        "name":"9mli",
+                        "lenght":"9m",
+                        "price":"900 000",
+                        "base":12,
+                        "selltype":"dona",
+                        "addthing":"9m li stalba 900 000",
+                        "type":"stalba"
+                  },
+                  {
+                        "name":"11mli",
+                        "lenght":"11m",
+                        "price":"1 100 000",
+                        "base":1,
+                        "type":"stalba",
+                        "selltype":"dona",
+                        "addthing":"9m li stalba 1 100 000"
+                  }
+            ]},
+            {"latok":[
+                  {
+                        "name":"katta 60li",
+                        "lenght":"2m",
+                        "between":60,
+                        "price":"150 000",
+                        "type":"latok",
+                        "used":"setka",
+                        "base":32,
+                        "selltype":"dona",
+                        "addthing":"60li latok 150 000"
+                  },
+                  {
+                        "name":"50li",
+                        "lenght":"2m",
+                        "between":50,
+                        "price":"120 000",
+                        "type":"latok",
+                        "used":"setka",
+                        "base":32,
+                        "selltype":"dona",
+                        "addthing":"50li latok 120 000"
+                  },
+                  {
+                        "name":"40li",
+                        "lenght":"2m",
+                        "between":40,
+                        "price":"90 000",
+                        "type":"latok",
+                        "used":"setka",
+                        "base":32,
+                        "selltype":"dona",
+                        "addthing":"40li latok 90 000"
+                  },
+                  {
+                        "name":"30li",
+                        "lenght":"2m",
+                        "between":30,
+                        "price":"80 000",
+                        "type":"latok",
+                        "used":"setka",
+                        "base":32,
+                        "selltype":"dona",
+                        "addthing":"30li latok 80 000"
+                  },
+                  {
+                        "name":"mayda 20li",
+                        "lenght":"2m",
+                        "between":20,
+                        "price":"70 000",
+                        "type":"latok",
+                        "used":"setka",
+                        "base":32,
+                        "selltype":"dona",
+                        "addthing":"20li latok 70 000"
+                  }
+            ]},
+            {"kalodus":[
+                  {
+                        "name":"katta kaludus",
+                        "lenght":"1m",
+                        "radius":"1m",
+                        "type":"kalodus",
+                        "used":"setka",
+                        "price":"150 000",
+                        "base":30,
+                        "selltype":"dona",
+                        "addthing":"kalodus katta 1m 150 000"
+                  },
+                  {
+                        "name":"kichik kaludus",
+                        "lenght":"0.5m",
+                        "radius":"1m",
+                        "type":"kalodus",
+                        "used":"setka",
+                        "price":"100 000",
+                        "base":3,
+                        "selltype":"dona",
+                        "addthing":"kalodus kichik 0.5m 100 000"
+                  },
+                  {
+                        "name":"kaludus qoppoq",
+                        "thickness":"20sm",
+                        "radius":"1m",
+                        "type":"kalodus",
+                        "use_type":"toilet",
+                        "price":"80 000",
+                        "base":30,
+                        "selltype":"dona",
+                        "addthing":"kalodus qoppoq toilet 80 000"
+                  },
+                  {
+                        "name":"kaludus qoppoq",
+                        "thickness":"20sm",
+                        "radius":"1m",
+                        "type":"kalodus",
+                        "use_type":"bath",
+                        "price":"100 000",
+                        "base":30,
+                        "selltype":"dona",
+                        "addthing":"kalodus qoppoq bath 100 000"
+                  }
+            ]},
+            {"sim":[
+                  {
+                        "name":"4li sim",
+                        "type":"sim",
+                        "color":"oq",
+                        "isHard":true,
+                        "used":"4li",
+                        "price":"12 000",
+                        "selltype":"kg",
+                        "base":"1",
+                        "addthing":"Qattiq 4li oq sim"
+                  },
+                  {
+                        "name":"3li sim",
+                        "type":"sim",
+                        "color":"qora",
+                        "isHard":false,
+                        "used":"3li",
+                        "price":"13 000",
+                        "selltype":"kg",
+                        "base":"1",
+                        "addthing":"Yumshoq 3li qora sim"
+                  },
+                  {
+                        "name":"2.2li sim",
+                        "type":"sim",
+                        "color":"qora",
+                        "isHard":false,
+                        "used":"2.2li",
+                        "price":"11 000",
+                        "selltype":"kg",
+                        "base":"1",
+                        "addthing":"Yumshoq 2.2li qora sim"
+                  }
+            ]}
+      ]}
+]

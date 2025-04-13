@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bosh sahifa</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #27ae60;
+            --text: #333;
+            --bg: #f8f9fa;
+            --card-bg: #fff;
+            --border: #e0e0e0;
+        }
+
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        #main {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            min-height: 100vh;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        #menu {
+            position: sticky;
+            top: 1.5rem;
+            height: calc(100vh - 3rem);
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        #btns-div {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        #btns-div button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        #btns-div button:hover {
+            background: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        #btns-div button.active {
+            background: var(--secondary);
+            box-shadow: 0 2px 4px rgba(52, 152, 219, 0.2);
+        }
+        #base {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .control {
+            padding: 1.5rem;
+            display: grid;
+            gap: 1rem;
+            max-height: calc(100vh - 3rem);
+            overflow-y: auto;
+        }
+
+        .event {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .event:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 3px 8px rgba(52, 152, 219, 0.1);
+        }
+
+        .header {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .name_thing {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .full-about {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .base-side {
+            display: grid;
+            gap: 0.25rem;
+            text-align: right;
+        }
+
+        .base-side h1 {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            #main {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            #menu {
+                position: static;
+                height: auto;
+                width: 100%;
+            }
+
+            .control {
+                max-height: none;
+                padding: 1rem;
+            }
+
+            .event {
+                grid-template-columns: 1fr;
+            }
+
+            .base-side {
+                text-align: left;
+                border-top: 1px solid var(--border);
+                padding-top: 0.75rem;
+            }
+        }
+.product-name-large {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.product-price {
+    font-size: 1.4rem;
+    color: #27ae60;
+    margin: 10px 0;
+    font-weight: 800;
+}
+
+.product-base {
+    font-size: 1.3rem;
+    color: #e67e22;
+    margin: 10px 0;
+    font-weight: 600;
+}
+
+.product-between {
+    font-size: 1.2rem;
+    color: #2980b9;
+    margin: 8px 0;
+    padding: 5px;
+    background: #f0f8ff;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.product-detail-small {
+    color: #95a5a6;
+    font-size: 0.9rem;
+    margin: 3px 0;
+}
+
+.product-addthing {
+    margin-top: 12px;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .product-name-large {
+        font-size: 1.3rem;
+    }
+    
+    .product-price {
+        font-size: 1.2rem;
+    }
+    
+    .product-base {
+        font-size: 1.1rem;
+    }
+}
+        @media (max-width: 480px) {
+            #btns-div button {
+                padding: 0.75rem;
+                font-size: 0.9rem;
+            }
+
+            .name_thing {
+                font-size: 1rem;
+            }
+
+            .base-side h1 {
+                font-size: 0.9rem;
+            }
+        }
+        
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--bg);
+        }
+
+        #main {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #menu {
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        #btns-div {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .category-btn {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: capitalize;
+        }
+
+        .category-btn.active {
+            background: var(--secondary);
+            box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+        }
+
+        #base {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .product-card {
+            padding: 15px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .product-name {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .product-detail {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+      <nav id="menu">
+            <div id="btns-div"></div>
+        </nav>
+        
+        <main id="base">
+            <!-- bu bolim qachon products-container ichidagi bironta bolim tanlansa shunday ishlaydi -->
+            <div class="bass-main"></div>
+            <div class="product-grid" id="products-container"></div>
+        </main>
+    </div>
+    
+    <script src="index.js"></script>
+</body>
+</html>
