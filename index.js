@@ -1,29 +1,23 @@
-let data; // Global o'zgaruvchi
+// index.js
+let data;
 
-// Ma'lumotlarni yuklash
 async function loadData() {
-    fetch('database.json')
-        .then(response => {
-            if (!response.ok) throw new Error('Server xatosi');
-            return response.json();
-        })
-        .then(jsonData => {
-            data = jsonData[0];
-            createCategoryButtons(); // Ma'lumotlar yuklangandan keyin chaqiramiz
-        })
-        .catch(error => {
-            console.error('Xatolik:', error);
-            alert('Ma\'lumotlarni yuklab boʻlmadi');
-        });
+    try {
+        const response = await fetch('database.json');
+        if (!response.ok) throw new Error('Server error');
+        const jsonData = await response.json();
+        data = jsonData;
+        createCategoryButtons();
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Failed to load data');
+    }
 }
 
-// Kategoriya tugmalarini yaratish
 function createCategoryButtons() {
-      
-
     const btnContainer = document.getElementById('btns-div');
-    btnContainer.innerHTML = ''; // Oldingi tugmalarni tozalash
-
+    btnContainer.innerHTML = '';
+    
     data.products.forEach(category => {
         const categoryName = Object.keys(category)[0];
         const button = document.createElement('button');
@@ -34,12 +28,8 @@ function createCategoryButtons() {
     });
 }
 
-// Dasturni ishga tushirish
-window.onload = loadData;
-
-  // Mahsulotlarni ko'rsatish
-  function showProducts(categoryName) {
-      const container = document.getElementById('products-container');
+function showProducts(categoryName) {
+    const container = document.getElementById('products-container');
     container.innerHTML = '';
     
     const category = data.products.find(c => c[categoryName]);
@@ -48,41 +38,87 @@ window.onload = loadData;
     category[categoryName].forEach(product => {
         const card = document.createElement('div');
         card.className = 'product-card';
-        
-        let html = `
+        card.innerHTML = `
             <h3 class="product-name-large">${product.name}</h3>
-        `; // Narx qatori o'chirildi
+            ${product.base ? `<div class="product-base">Bazada: ${product.base} ta</div>` : ''}
+            ${product.between ? `<div class="product-between">Oraliq: ${product.between} sm</div>` : ''}
+            ${product.addthing ? `<div class="product-addthing">${product.addthing}</div>` : ''}
+        `;
+        
+        card.addEventListener('click', () => showProductDetails(product, categoryName));
+        container.appendChild(card);
+    });
+}
 
-        // Bazada qolgan miqdor
-        if (product.base !== undefined && product.base !== null) {
-            html += `<div class="product-base">Bazada: ${product.base} ta</div>`;
-        }
-  
-          // Katta ko'rinadigan between (latok va kalodus uchun)
-          if (product.between) {
-              html += `<div class="product-between">Oraliq: ${product.between} sm</div>`;
-          }
-  
-          // Qolgan maydonlar
-          const details = {
-              'lenght': `Uzunlik: ${product.lenght}`,
-              'used': `Ishlatilishi: ${product.used}`,
-              'color': `Rangi: ${product.color}`
-          };
-  
-          for (const [key, text] of Object.entries(details)) {
-              if (product[key]) {
-                  html += `<div class="product-detail-small">${text}</div>`;
-              }
-          }
-  
-          if (product.addthing) {
-              html += `<div class="product-addthing">${product.addthing}</div>`;
-          }
-  
-          card.innerHTML = html;
-          container.appendChild(card);
-      });
-  }
+function showProductDetails(product, categoryName) {
+    const container = document.getElementById('products-container');
+    container.innerHTML = `
+        <div id="active-product">
+            <div id="header-prod">
+                <div id="name-side-prod">
+                    <div id="name-prod">
+                        <h1>${product.name}</h1>
+                    </div>
+                </div>
+                <div id="setting-side-prod">
+                    <div id="settings-prod">
+                        <button type="button" onclick="changeProdSettings('${product.name}')">Standartlarni o'zgartirish</button>
+                        <button type="button" onclick="changeProdBase('${product.name}')">Bazani o'zgartirish</button>
+                    </div>
+                </div>
+            </div>
+            <div id="prod-info">
+                <div id="about-prod">${product.addthing}</div>
+                <div id="sell-prod">
+                    <div class="input-group">
+                        <label for="sellInputSoni">Soni:</label>
+                        <input type="number" id="sellInputSoni" placeholder="Sotilgan miqdor">
+                    </div>
+                    <div class="input-group">
+                        <label for="sellInputNarx">Narxi:</label>
+                        <input type="number" id="sellInputNarx" value="${parseInt(product.price.replace(/\D/g, ''))}">
+                    </div>
+                    <div class="input-group">
+                        <label for="tolov">To'lov usuli:</label>
+                        <select id="tolov">
+                            <option value="naqt">Naqt</option>
+                            <option value="qarz">Qarz</option>
+                            <option value="karta">Karta</option>
+                        </select>
+                    </div>
+                    <button type="button" onclick="sellProduct('${categoryName}', '${product.name}')">Sotishni tasdiqlash</button>
+                </div>
+            </div>
+        </div>
+    `;
+}
 
-  // Dasturni ishga tushirish
+function sellProduct(categoryName, productName) {
+    const count = parseInt(document.getElementById('sellInputSoni').value);
+    const price = parseInt(document.getElementById('sellInputNarx').value);
+    const paymentMethod = document.getElementById('tolov').value;
+
+    // Update product base
+    const product = data.products
+        .find(c => c[categoryName])[categoryName]
+        .find(p => p.name === productName);
+    
+    product.base -= count;
+
+    // Add to sales
+    data.sotuvTizimi[0].stoyka.push({
+        name: productName,
+        selledSoni: count,
+        selltype: product.selltype,
+        selledNarx: price,
+        selledTime: new Date().toISOString().split('T')[0],
+        isQarz: paymentMethod === 'qarz',
+        ispaid: paymentMethod === 'naqt'
+    });
+
+    // Show updated products
+    showProducts(categoryName);
+    alert("Sotuv muvaffaqiyatli qayd etildi!");
+}
+
+window.onload = loadData;

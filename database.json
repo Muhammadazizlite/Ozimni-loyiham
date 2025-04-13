@@ -209,5 +209,25 @@
                         "addthing":"Yumshoq 2.2li qora sim"
                   }
             ]}
+      ]},
+      {"sotuvTizimi":[
+            {"stoyka":[
+                  {
+                        "name":"3li sim",
+                        "selledSoni":20,
+                        "selltype":"dona",
+                        "selledNarx":"15 000",
+                        "selledTime":"2024-02-02",
+                        "isQarz":[
+                              {
+                                    "selled":true,
+                                    "money":false,
+                                    "backTime":"2025-11-02"
+                              }
+                        ],
+                        "ispaid":false,
+                        "when":"2025-11-02"
+                  }
+            ]}
       ]}
 ]
